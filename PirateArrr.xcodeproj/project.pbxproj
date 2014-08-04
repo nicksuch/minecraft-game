@@ -21,6 +21,10 @@
 		B05130D6198FC8E2006EC60F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05130B8198FC8E2006EC60F /* UIKit.framework */; };
 		B05130DE198FC8E2006EC60F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B05130DC198FC8E2006EC60F /* InfoPlist.strings */; };
 		B05130E0198FC8E2006EC60F /* PirateArrrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B05130DF198FC8E2006EC60F /* PirateArrrTests.m */; };
+		B05130EE198FCB48006EC60F /* CCCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = B05130ED198FCB48006EC60F /* CCCharacter.m */; };
+		B05130F1198FCB59006EC60F /* CCTile.m in Sources */ = {isa = PBXBuildFile; fileRef = B05130F0198FCB59006EC60F /* CCTile.m */; };
+		B05130F4198FCBB4006EC60F /* CCFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B05130F3198FCBB4006EC60F /* CCFactory.m */; };
+		B05130F7198FCBC0006EC60F /* CCBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = B05130F6198FCBC0006EC60F /* CCBoss.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,14 @@
 		B05130DB198FC8E2006EC60F /* PirateArrrTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PirateArrrTests-Info.plist"; sourceTree = "<group>"; };
 		B05130DD198FC8E2006EC60F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B05130DF198FC8E2006EC60F /* PirateArrrTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PirateArrrTests.m; sourceTree = "<group>"; };
+		B05130EC198FCB48006EC60F /* CCCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCharacter.h; sourceTree = "<group>"; };
+		B05130ED198FCB48006EC60F /* CCCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCharacter.m; sourceTree = "<group>"; };
+		B05130EF198FCB59006EC60F /* CCTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTile.h; sourceTree = "<group>"; };
+		B05130F0198FCB59006EC60F /* CCTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTile.m; sourceTree = "<group>"; };
+		B05130F2198FCBB4006EC60F /* CCFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFactory.h; sourceTree = "<group>"; };
+		B05130F3198FCBB4006EC60F /* CCFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCFactory.m; sourceTree = "<group>"; };
+		B05130F5198FCBC0006EC60F /* CCBoss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBoss.h; sourceTree = "<group>"; };
+		B05130F6198FCBC0006EC60F /* CCBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBoss.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +129,14 @@
 				B05130C6198FC8E2006EC60F /* Main.storyboard */,
 				B05130C9198FC8E2006EC60F /* CCViewController.h */,
 				B05130CA198FC8E2006EC60F /* CCViewController.m */,
+				B05130EC198FCB48006EC60F /* CCCharacter.h */,
+				B05130ED198FCB48006EC60F /* CCCharacter.m */,
+				B05130EF198FCB59006EC60F /* CCTile.h */,
+				B05130F0198FCB59006EC60F /* CCTile.m */,
+				B05130F2198FCBB4006EC60F /* CCFactory.h */,
+				B05130F3198FCBB4006EC60F /* CCFactory.m */,
+				B05130F5198FCBC0006EC60F /* CCBoss.h */,
+				B05130F6198FCBC0006EC60F /* CCBoss.m */,
 				B05130CC198FC8E2006EC60F /* Images.xcassets */,
 				B05130BB198FC8E2006EC60F /* Supporting Files */,
 			);
@@ -250,8 +270,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B05130F7198FCBC0006EC60F /* CCBoss.m in Sources */,
+				B05130EE198FCB48006EC60F /* CCCharacter.m in Sources */,
 				B05130C5198FC8E2006EC60F /* CCAppDelegate.m in Sources */,
+				B05130F1198FCB59006EC60F /* CCTile.m in Sources */,
 				B05130C1198FC8E2006EC60F /* main.m in Sources */,
+				B05130F4198FCBB4006EC60F /* CCFactory.m in Sources */,
 				B05130CB198FC8E2006EC60F /* CCViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

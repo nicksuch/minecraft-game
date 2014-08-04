@@ -26,4 +26,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)upButton:(UIButton *)sender {
+}
+
+- (IBAction)rightButton:(UIButton *)sender {
+}
+
+- (IBAction)downButton:(UIButton *)sender {
+}
+
+- (IBAction)leftButton:(UIButton *)sender {
+}
+
+- (IBAction)actionButton:(UIButton *)sender {
+}
 @end
