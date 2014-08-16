@@ -7,6 +7,9 @@
 //
 
 #import "CCViewController.h"
+#import "CCCharacter.h"
+#import "CCFactory.h"
+#import "CCTile.h"
 
 @interface CCViewController ()
 
@@ -18,26 +21,70 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    CCFactory *factory = [[CCFactory alloc] init];
+    self.tiles = [factory tiles];
+    self.currentTile = CGPointMake(0, 0);
+    [self updateTile];
+    [self updateButtons];
+    NSLog(@"x: %f, y: %f", self.currentTile.x, self.currentTile.y);
+
 }
 
-- (void)didReceiveMemoryWarning
+- (void)updateTile
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    CCTile *tileModel = [[self.tiles objectAtIndex:self.currentTile.x] objectAtIndex:self.currentTile.y];
+    self.storyLabel.text = tileModel.story;
+    self.backgroundImageView.image = tileModel.backgroundImage;
 }
 
-- (IBAction)upButton:(UIButton *)sender {
+- (void)updateButtons
+{
+    self.westButton.hidden = [self tileExistsAtPoint:CGPointMake(self.currentTile.x - 1, self.currentTile.y)];
+    self.eastButton.hidden = [self tileExistsAtPoint:CGPointMake(self.currentTile.x + 1, self.currentTile.y)];
+    self.northButton.hidden = [self tileExistsAtPoint:CGPointMake(self.currentTile.x, self.currentTile.y + 1)];
+    self.southButton.hidden = [self tileExistsAtPoint:CGPointMake(self.currentTile.x, self.currentTile.y - 1)];
 }
 
-- (IBAction)rightButton:(UIButton *)sender {
+- (BOOL)tileExistsAtPoint:(CGPoint)point
+{
+    if (point.y >= 0 && point.x >= 0 && point.x < [self.tiles count] && point.y < [[self.tiles objectAtIndex:point.x] count]) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
-- (IBAction)downButton:(UIButton *)sender {
+- (IBAction)northButtonPressed:(UIButton *)sender
+{
+    self.currentTile = CGPointMake(self.currentTile.x, self.currentTile.y + 1);
+    [self updateButtons];
+    [self updateTile];
 }
 
-- (IBAction)leftButton:(UIButton *)sender {
+- (IBAction)eastButtonPresses:(UIButton *)sender
+{
+    self.currentTile = CGPointMake(self.currentTile.x + 1, self.currentTile.y);
+    [self updateButtons];
+    [self updateTile];
 }
 
-- (IBAction)actionButton:(UIButton *)sender {
+- (IBAction)southButtonPressed:(UIButton *)sender
+{
+    self.currentTile = CGPointMake(self.currentTile.x, self.currentTile.y - 1);
+    [self updateButtons];
+    [self updateTile];
+}
+
+- (IBAction)westButtonPressed:(UIButton *)sender
+{
+    self.currentTile = CGPointMake(self.currentTile.x - 1, self.currentTile.y);
+    [self updateButtons];
+    [self updateTile];
+}
+
+- (IBAction)actionButtonPressed:(UIButton *)sender
+{
+    
 }
 @end

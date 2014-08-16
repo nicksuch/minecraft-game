@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CCWeapon.h"
+#import "CCArmor.h"
 
 @interface CCCharacter : NSObject
 

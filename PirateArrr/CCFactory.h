@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CCTile.h"
 
 @interface CCFactory : NSObject
+
+-(NSArray *)tiles;
 
 @end
