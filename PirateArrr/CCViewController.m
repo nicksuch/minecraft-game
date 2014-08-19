@@ -24,6 +24,7 @@
     
     CCFactory *factory = [[CCFactory alloc] init];
     self.tiles = [factory tiles];
+    self.character = [factory character];
     self.currentTile = CGPointMake(0, 0);
     [self updateTile];
     [self updateButtons];
@@ -36,6 +37,11 @@
     CCTile *tileModel = [[self.tiles objectAtIndex:self.currentTile.x] objectAtIndex:self.currentTile.y];
     self.storyLabel.text = tileModel.story;
     self.backgroundImageView.image = tileModel.backgroundImage;
+    self.healthLabel.text = [NSString stringWithFormat:@"Health: %i", self.character.health];
+    self.damageLabel.text = [NSString stringWithFormat:@"Damage: %i", self.character.weapon.damage];
+    self.armorLabel.text = [NSString stringWithFormat:@"Armor: %@", self.character.armor.name];
+    self.weaponLabel.text = [NSString stringWithFormat:@"Weapon: %@", self.character.weapon.name];
+    [self.actionButton setTitle:tileModel.actionButtonName forState:UIControlStateNormal];
 }
 
 - (void)updateButtons
@@ -52,6 +58,22 @@
         return NO;
     } else {
         return YES;
+    }
+}
+
+- (void)updateCharacterStatsForArmor:(CCArmor *)armor withWeapons:(CCWeapon *)weapon withHealthEffect:(int)healthEffect
+{
+    if (armor != nil) {
+        self.character.health = self.character.health - self.character.armor.health + armor.health;
+        self.character.armor = armor;
+    } else if (weapon != nil) {
+        self.character.damage = self.character.damage - self.character.weapon.damage + weapon.damage;
+        self.character.weapon = weapon;
+    } else if (healthEffect != 0) {
+        self.character.health = self.character.health + healthEffect;
+    } else {
+        self.character.health = self.character.health + self.character.armor.health;
+        self.character.damage = self.character.damage + self.character.weapon.damage;
     }
 }
 
@@ -85,6 +107,6 @@
 
 - (IBAction)actionButtonPressed:(UIButton *)sender
 {
-    
+//    [self.character updateCharacterStatsForArmor:self.currentTile.armor withWeapons:self.character.weapon withHealthEffect:self.character.healthEffect];
 }
 @end

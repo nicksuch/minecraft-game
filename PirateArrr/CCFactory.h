@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "CCTile.h"
+#import "CCCharacter.h"
 
 @interface CCFactory : NSObject
 
 -(NSArray *)tiles;
+-(CCCharacter *)character;
 
 @end

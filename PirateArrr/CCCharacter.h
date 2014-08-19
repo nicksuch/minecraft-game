@@ -12,9 +12,9 @@
 
 @interface CCCharacter : NSObject
 
-@property (nonatomic)int characterHealth;
-@property (nonatomic)int characterDamage;
-@property (strong, nonatomic) NSString *characterArmor;
-@property (strong, nonatomic) NSString *characterWeapon;
+@property (nonatomic)int health;
+@property (nonatomic)int damage;
+@property (strong, nonatomic) CCArmor *armor;
+@property (strong, nonatomic) CCWeapon *weapon;
 
 @end
