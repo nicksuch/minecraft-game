@@ -25,12 +25,16 @@
     CCFactory *factory = [[CCFactory alloc] init];
     self.tiles = [factory tiles];
     self.character = [factory character];
+    self.boss = [factory boss];
     self.currentTile = CGPointMake(0, 0);
+    [self updateCharacterStatsForArmor:nil withWeapons:nil withHealthEffect:0];
     [self updateTile];
     [self updateButtons];
     NSLog(@"x: %f, y: %f", self.currentTile.x, self.currentTile.y);
 
 }
+
+#pragma mark - helper methods
 
 - (void)updateTile
 {
@@ -77,6 +81,8 @@
     }
 }
 
+#pragma mark - IBActions
+
 - (IBAction)northButtonPressed:(UIButton *)sender
 {
     self.currentTile = CGPointMake(self.currentTile.x, self.currentTile.y + 1);
@@ -107,6 +113,24 @@
 
 - (IBAction)actionButtonPressed:(UIButton *)sender
 {
-//    [self.character updateCharacterStatsForArmor:self.currentTile.armor withWeapons:self.character.weapon withHealthEffect:self.character.healthEffect];
+    CCTile *tile = [[self.tiles objectAtIndex:self.currentTile.x]objectAtIndex:self.currentTile.y];
+    if (tile.healthEffect == -15) {
+        self.boss.health = self.boss.health - self.character.damage;
+    }
+    [self updateCharacterStatsForArmor:tile.armor withWeapons:tile.weapon withHealthEffect:tile.healthEffect];
+    if (self.character.health <= 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Death Message" message:@"You have died :(" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+    } else if (self.boss.health <= 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Victory Message" message:@"You have defeated the boss!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+    [self updateTile];
+}
+
+- (IBAction)resetButtonPressed:(UIButton *)sender {
+    self.character = nil;
+    self.boss = nil;
+    [self viewDidLoad];
 }
 @end

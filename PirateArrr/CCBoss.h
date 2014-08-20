@@ -10,7 +10,7 @@
 
 @interface CCBoss : NSObject
 
-@property (nonatomic)int bossHealth;
-@property (nonatomic)int bossDamage;
+@property (nonatomic)int health;
+//@property (nonatomic)int damage;
 
 @end

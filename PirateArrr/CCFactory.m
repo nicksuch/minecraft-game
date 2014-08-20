@@ -110,15 +110,17 @@
     CCTile *tile11 = [[CCTile alloc] init];
     tile11.story = @"Wouldn't it be nice to be a farmer? Good news, you found a Stone Hoe!";
     tile11.backgroundImage = [UIImage imageNamed:@"minecraft-1.png"];
-    tile11.weapon.name = @"Stone Hoe";
-    tile11.weapon.damage = 1;
+    CCWeapon *stoneHoe = [[CCWeapon alloc] init];
+    stoneHoe.name = @"Stone Hoe";
+    stoneHoe.damage = 1;
+    tile11.weapon = stoneHoe;
     tile11.actionButtonName = @"Pick up hoe";
     
     CCTile *tile12 = [[CCTile alloc] init];
-    tile12.story = @"What's that hissing sound? Player was blown up by a Creeper.";
+    tile12.story = @"Aww, snap. It's an Enderman. Prepare to fight?";
     tile12.backgroundImage = [UIImage imageNamed:@"minecraft-1.png"];
-    tile12.healthEffect = -5;
-    tile12.actionButtonName = @"Play with fire, get burned";
+    tile12.healthEffect = -15;
+    tile12.actionButtonName = @"Fight Enderman.";
     
     NSMutableArray *fourthColumn = [[NSMutableArray alloc] init];
     [fourthColumn addObject:tile10];
@@ -145,6 +147,13 @@
     character.weapon = weapon;
     
     return character;
+}
+
+-(CCBoss *)boss
+{
+    CCBoss *boss = [[CCBoss alloc] init];
+    boss.health = 65;
+    return boss;
 }
 
 @end
